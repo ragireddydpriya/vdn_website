@@ -13,90 +13,115 @@ const services = [
     title: "Landscape Design & Execution",
     slug: "landscape-design",
     desc: "Custom garden designs that blend aesthetics with functionality. From concept to completion.",
-    imageCount: 10,
   },
   {
     icon: Flower2,
     title: "Garden Development & Maintenance",
     slug: "garden-maintenance",
     desc: "Regular upkeep services to keep your garden lush, healthy, and beautiful year-round.",
-    imageCount: 10,
   },
   {
     icon: Sun,
     title: "Lawn Installation",
     slug: "lawn-installation",
     desc: "Natural and artificial lawn installation for pristine green spaces that last.",
-    imageCount: 10,
   },
   {
     icon: Palette,
     title: "Terrace & Balcony Gardens",
     slug: "terrace-gardens",
     desc: "Maximize small spaces with vertical gardens, planters, and creative green solutions.",
-    imageCount: 10,
   },
   {
     icon: Droplets,
     title: "Drip Irrigation Systems",
     slug: "drip-irrigation",
     desc: "Smart automated irrigation setups for efficient water management and plant health.",
-    imageCount: 10,
   },
   {
     icon: Leaf,
     title: "Vertical Gardens",
     slug: "vertical-gardens",
     desc: "Living walls and vertical green installations for modern spaces.",
-    imageCount: 10,
   },
   {
     icon: Shovel,
     title: "Hardscaping & Water Features",
     slug: "hardscaping",
     desc: "Pathways, stones, decking, fountains, and water features for stunning outdoor aesthetics.",
-    imageCount: 10,
   },
   {
     icon: Building2,
     title: "Drain Cell & Red Soil Supply",
     slug: "drain-cell",
     desc: "Drain cell supply & installation, red soil, and plant nutrient supply for healthy landscapes.",
-    imageCount: 10,
   },
   {
     icon: Users,
     title: "Skilled Labour",
     slug: "skilled-labour",
     desc: "Experienced, trained landscaping workforce for projects of all scales.",
-    imageCount: 10,
   },
   {
     icon: Truck,
     title: "Indoor Plants Supply & Maintenance",
     slug: "indoor-plants-supply",
     desc: "Premium indoor plant supply with regular maintenance services for homes and offices.",
-    imageCount: 10,
   },
   {
     icon: Gift,
     title: "Corporate Bulk Supply & Gifts",
     slug: "corporate-bulk",
     desc: "Pan-India corporate bulk plant supply and curated green gift solutions.",
-    imageCount: 10,
   },
 ];
+
+// Gallery image component with blur placeholder and WebP support
+interface GalleryImageProps {
+  src: string;
+  alt: string;
+}
+
+const GalleryImage = ({ src, alt }: GalleryImageProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return null; // Don't render anything if image fails to load
+  }
+
+  return (
+    <div className={`relative aspect-[4/3] bg-muted rounded-xl overflow-hidden transition-opacity duration-300 ${
+      isLoaded ? "opacity-100" : "opacity-50"
+    }`}>
+      {/* Main image with eager loading */}
+      <img
+        src={src}
+        alt={alt}
+        loading="eager"
+        fetchPriority="high"
+        decoding="sync"
+        className="w-full h-full object-cover transition-opacity duration-300"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setHasError(true)}
+      />
+    </div>
+  );
+};
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
   const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
   const openGallery = (service: typeof services[0]) => {
-    // Try loading images 1.jpg through 10.jpg from the service folder
+    // Immediately load images without checking - they'll fail silently if missing
     const images: string[] = [];
-    for (let i = 1; i <= service.imageCount; i++) {
+    
+    // Try loading images 1.jpg through 15.jpg
+    for (let i = 1; i <= 15; i++) {
       images.push(getImagePath(`/images/services/${service.slug}/${i}.jpg`));
     }
+
     setLoadedImages(images);
     setSelectedService(service);
   };
@@ -161,16 +186,10 @@ const Services = () => {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {loadedImages.map((img, idx) => (
-                  <img
+                  <GalleryImage
                     key={idx}
                     src={img}
                     alt={`${selectedService.title} example ${idx + 1}`}
-                    loading="lazy"
-                    className="w-full rounded-xl aspect-[4/3] object-cover bg-muted"
-                    onError={(e) => {
-                      // Hide images that don't exist
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
                   />
                 ))}
               </div>

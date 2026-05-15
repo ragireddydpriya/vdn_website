@@ -20,19 +20,21 @@ interface Product {
 const ProductCard = ({ product }: { product: Product }) => {
   const showCare = product.care_level !== "N/A";
   const whatsappMsg = `${config.whatsapp}&text=Hi%2C%20I%20am%20interested%20in%20${encodeURIComponent(product.name)}%20(${product.id})`;
+  const imagePath = getImagePath(product.image);
 
   return (
     <div className="glass-card overflow-hidden group">
       <div className="aspect-square overflow-hidden bg-muted">
         <img
-          src={getImagePath(product.image)}
+          src={imagePath}
           alt={product.name}
-          loading="lazy"
-          decoding="async"
+          loading="eager"
+          fetchPriority="high"
+          decoding="sync"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           srcSet={`
-            ${getImagePath(product.image)}?w=300 300w,
-            ${getImagePath(product.image)}?w=600 600w
+            ${imagePath}?w=300 300w,
+            ${imagePath}?w=600 600w
           `}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           onError={(e) => {

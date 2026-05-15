@@ -11,6 +11,27 @@ import { getImagePath } from "@/lib/utils";
 //   public/images/categories/pots.jpg
 //   public/images/categories/planters.jpg
 
+interface CategoryImageProps {
+  src: string;
+  alt: string;
+}
+
+const CategoryImage = ({ src, alt }: CategoryImageProps) => {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="eager"
+      fetchPriority="high"
+      decoding="sync"
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      onError={(e) => {
+        (e.target as HTMLImageElement).src = getImagePath("/images/plant-placeholder.svg");
+      }}
+    />
+  );
+};
+
 const CategoryShowcase = () => {
   const categories = productData.categories.map((cat) => ({
     name: cat.name,
@@ -40,14 +61,9 @@ const CategoryShowcase = () => {
                 to={`/products?category=${cat.slug}`}
                 className="group block relative rounded-2xl overflow-hidden aspect-[3/4]"
               >
-                <img
+                <CategoryImage
                   src={cat.image}
                   alt={cat.name}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 bg-muted"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = getImagePath("/images/plant-placeholder.svg");
-                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
