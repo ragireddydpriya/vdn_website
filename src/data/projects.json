@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "title": "Candeur 40 Landscape",
+    "title": "Candeur 40",
     "location": "Miyapur, Hyderabad",
     "description": "Complete landscape transformation for this premium gated community with lush gardens, pathways, and automated irrigation systems.",
     "client": "Candeur 40"
   },
   {
     "id": 2,
-    "title": "Aloha Resorts Green Spaces",
+    "title": "Aloha Resorts",
     "location": "Hyderabad",
     "description": "Resort landscaping with tropical gardens, water features, and curated plant installations for a tranquil guest experience.",
     "client": "Aloha Resorts"
@@ -22,35 +22,35 @@
   },
   {
     "id": 4,
-    "title": "Risinia Builders Township",
+    "title": "Risinia Builders",
     "location": "Hyderabad",
     "description": "Large-scale township landscaping with terrace gardens, vertical green walls, and ornamental plant installations across multiple blocks.",
     "client": "Risinia Builders"
   },
   {
     "id": 5,
-    "title": "Vajra Group Corporate Gardens",
+    "title": "Vajra Group",
     "location": "Hyderabad",
     "description": "Professional corporate entrance landscaping with decorative planters, manicured shrubs, and elegant floral arrangements.",
     "client": "Vajra Group"
   },
   {
     "id": 6,
-    "title": "Divya Shree Shakthi Villas",
+    "title": "Divya Shree Shakthi",
     "location": "Hyderabad",
     "description": "Luxury villa landscaping with poolside gardens, tropical plants, bougainvillea, and ambient garden lighting.",
     "client": "Divya Shree Shakthi"
   },
   {
     "id": 7,
-    "title": "Ogha Wellness Retreat",
+    "title": "Ogha Wellness",
     "location": "Hyderabad",
     "description": "Zen-inspired wellness garden with bamboo, stepping stones, meditation areas, and tranquil water features.",
     "client": "Ogha Wellness"
   },
   {
     "id": 8,
-    "title": "Shiva Sai Myra Residences",
+    "title": "Shiva Sai Myra",
     "location": "Hyderabad",
     "description": "Modern high-rise entrance landscaping with decorative hedges, palm trees, and vibrant seasonal flower beds.",
     "client": "Shiva Sai Myra"
@@ -64,21 +64,21 @@
   },
   {
     "id": 10,
-    "title": "Makuta Myspace Community",
+    "title": "Makuta Myspace",
     "location": "Hyderabad",
     "description": "Family-friendly community landscaping with children's play areas surrounded by lush gardens and walking trails.",
     "client": "Makuta Myspace 1 & 2"
   },
   {
     "id": 11,
-    "title": "Nebula Avaas Gardens",
+    "title": "Nebula Avaas",
     "location": "Hyderabad",
     "description": "Automated irrigation systems with tropical landscaping, green lawns, and curated ornamental plant collections.",
     "client": "Nebula Avaas"
   },
   {
     "id": 12,
-    "title": "ARR Infracon Grand Entry",
+    "title": "ARR Infracon",
     "location": "Hyderabad",
     "description": "Grand entrance landscaping with avenue trees, decorative lighting, water fountain, and premium ornamental installations.",
     "client": "ARR Infracon"
