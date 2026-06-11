@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Products from "./pages/Products.tsx";
+import Blogs from "./pages/Blogs.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { preloadCriticalImages } from "@/hooks/use-preload-images";
 
@@ -58,6 +60,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </HashRouter>

@@ -48,39 +48,6 @@ const clientLogos: Record<string, string> = {
   "ARR Infracon": arrLogo,
 };
 
-// Optimized image component with instant loading
-interface OptimizedProjectImageProps {
-  src: string;
-  alt: string;
-  isLogo?: boolean;
-}
-
-const OptimizedProjectImage = ({ src, alt, isLogo = false }: OptimizedProjectImageProps) => {
-  if (isLogo) {
-    return (
-      <img
-        src={src}
-        alt={alt}
-        loading="eager"
-        fetchPriority="high"
-        decoding="sync"
-        className="w-4/5 h-auto max-h-[80%] object-contain"
-      />
-    );
-  }
-
-  return (
-    <img
-      src={src}
-      alt={alt}
-      loading="eager"
-      fetchPriority="high"
-      decoding="sync"
-      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-    />
-  );
-};
-
 const Projects = () => {
   return (
     <section id="projects" className="section-padding" style={{ background: "var(--gradient-sand)" }}>
@@ -104,15 +71,20 @@ const Projects = () => {
               >
                 <div className="aspect-[4/3] overflow-hidden relative flex items-center justify-center bg-white/5">
                   {logo ? (
-                    <OptimizedProjectImage
+                    <img
                       src={logo}
                       alt={project.client}
-                      isLogo={true}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-4/5 h-auto max-h-[80%] object-contain"
                     />
                   ) : (
-                    <OptimizedProjectImage
+                    <img
                       src={projectImages[i]}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                   )}
                 </div>

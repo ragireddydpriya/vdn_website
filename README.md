@@ -19,7 +19,7 @@ git clone <your-repo-url>
 cd vdnlandscapes
 
 # Install dependencies
-npm install
+npm powershell -ExecutionPolicy Bypass -Command "npm install"
 ```
 
 ### Start Development Server
